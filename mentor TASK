@@ -1,0 +1,52 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<script src="flag.js"></script>  
+    <title>Flags</title>
+</head>
+<body>
+ 
+<script src="flag.js"></script>    
+</body>
+</html>
+
+------------------------------------------------------
+JS
+
+
+document.body.innerHTML=`
+<section class="container">
+<div id="flags" class="row>
+</div>
+</section>`
+
+fetch("https://restcountries.com/v2/all")
+.then((data)=>data.json())
+.then((countries)=>{
+countries.forEach((data) => {
+    const flags=document.querySelector("#flags");
+
+    flags.innerHTML=`
+    <div class= "col-12 sm-6 md-3 >
+    <div class="flag-container">
+    <img 
+    src=${data.flags.svg}++
+    class="flag"
+    />
+    <div class="details">
+<h3>${data.name}</h3>
+<p><b>population:</b>${data.population}</p>
+<p><b>region:</b>${data.region}</p>
+<p><b>capital:</b>${data.capital}</p>
+</div>
+</div>
+</div>`;
+
+});
+});
